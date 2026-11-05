@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use this software in your research, please cite it using these metadata."
+title: "fuzzymatch: Industrial-scale Text Fuzzy Mapping and Entity Resolution"
+version: 1.0.0
+date-released: 2026-11-05
+authors:
+  - family-names: "Kieu"
+    given-names: "Tri"
+    email: "trikieu293@gmail.com"
+license: MIT
+repository-code: "https://github.com/trikieu293/fuzzymatch"
+keywords:
+  - "entity resolution"
+  - "record linkage"
+  - "fuzzy matching"
+  - "Fellegi-Sunter"
+  - "expectation-maximization"
+references:
+  - type: article
+    authors:
+      - family-names: "Fellegi"
+        given-names: "Ivan P."
+      - family-names: "Sunter"
+        given-names: "Alan B."
+    title: "A Theory for Record Linkage"
+    journal: "Journal of the American Statistical Association"
+    volume: 64
+    issue: 328
+    year: 1969
+    pages: "1183-1210"

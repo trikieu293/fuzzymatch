@@ -1,0 +1,20 @@
+{
+  "title": "fuzzymatch: Industrial-scale Text Fuzzy Mapping and Entity Resolution",
+  "version": "1.0.0",
+  "upload_type": "software",
+  "description": "Production and research library for deduplication, record linkage, and fuzzy joins implementing Fellegi-Sunter EM, composite distance scoring, and SQL candidate generation.",
+  "creators": [
+    {
+      "name": "Kieu, Tri"
+    }
+  ],
+  "access_right": "open",
+  "license": "MIT",
+  "keywords": [
+    "entity resolution",
+    "record linkage",
+    "fuzzy matching",
+    "Fellegi-Sunter",
+    "data quality"
+  ]
+}

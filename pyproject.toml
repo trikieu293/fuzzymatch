@@ -1,0 +1,98 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fuzzymatch"
+description = "Industrial-scale text fuzzy mapping library for Python"
+readme = "README.md"
+requires-python = ">=3.11"
+license = "MIT"
+authors = [{ name = "Tri Kieu", email = "trikieu293@gmail.com" }]
+maintainers = [{ name = "Tri Kieu", email = "trikieu293@gmail.com" }]
+keywords = ["fuzzy-matching", "entity-resolution", "record-linkage", "deduplication"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Financial and Insurance Industry",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+    "Typing :: Typed",
+]
+dependencies = [
+    "pandas>=2.0",
+    "numpy>=1.24",
+    "scikit-learn>=1.3",
+    "datasketch>=1.2",
+    "networkx>=3.0",
+    "rapidfuzz>=3.0",
+]
+dynamic = ["version"]
+
+[project.scripts]
+fuzzymatch = "fuzzymatch.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/trikieu293/fuzzymatch"
+Repository = "https://github.com/trikieu293/fuzzymatch"
+Issues = "https://github.com/trikieu293/fuzzymatch/issues"
+Changelog = "https://github.com/trikieu293/fuzzymatch/blob/master/CHANGELOG.md"
+
+[project.optional-dependencies]
+duckdb = ["duckdb>=1.0"]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "mypy>=1.0",
+    "pandas-stubs>=2.0",
+    "ruff>=0.16",
+    "sphinx>=7.0",
+    "sphinx_rtd_theme>=2.0",
+    "myst-parser>=2.0",
+    "build>=1.0",
+    "twine>=5.0",
+    "hypothesis>=6.0",
+    "openpyxl>=3.1",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["fuzzymatch*"]
+
+[tool.setuptools.dynamic]
+version = {attr = "fuzzymatch.__version__"}
+
+[tool.setuptools.package-data]
+fuzzymatch = ["py.typed"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+# Full modern set for library + tests; experiment scripts get pragmatic
+# exemptions (local-time stamps, best-effort exception handling).
+select = ["E4", "E7", "E9", "F", "I", "UP", "B", "DTZ", "PERF", "PLW", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"experiments/*" = ["DTZ", "BLE001", "PERF402", "PLW1510", "E402", "B905"]
+
+[tool.mypy]
+strict = true
+files = ["fuzzymatch"]
+
+[[tool.mypy.overrides]]
+module = ["sklearn.*", "networkx", "datasketch"]
+ignore_missing_imports = true
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+markers = ["slow: marks tests as slow (deselect with -m 'not slow')"]
+
+[tool.coverage.report]
+fail_under = 95
+show_missing = true
